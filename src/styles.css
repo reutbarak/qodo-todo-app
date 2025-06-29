@@ -1,0 +1,49 @@
+/* ToDoList styles */
+.todo-container {
+  background: #fff;
+  margin: 60px auto;
+  padding: 30px 40px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  width: 350px;
+  font-family: Arial, sans-serif;
+}
+.todo-header {
+  text-align: center;
+  color: #333;
+}
+.todo-form {
+  display: flex;
+  margin-bottom: 20px;
+}
+.todo-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
+  outline: none;
+}
+.todo-button {
+  padding: 10px 18px;
+  border: none;
+  background: #007bff;
+  color: #fff;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  font-weight: bold;
+}
+.todo-button:hover {
+  background: #0056b3;
+}
+.todo-ul {
+  list-style: none;
+  padding: 0;
+}
+.todo-li {
+  background: #f9f9f9;
+  margin-bottom: 8px;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #eee;
+  color: #333;
+}
