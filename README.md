@@ -1,2 +1,2 @@
 # qodo-todo-app
-ToDo List appliction
+ToDo List application
