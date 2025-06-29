@@ -9,9 +9,21 @@ function ToDoList() {
     e.preventDefault();
     const trimmed = input.trim();
     if (trimmed) {
-      setTasks([...tasks, trimmed]);
+      setTasks([...tasks, { text: trimmed, completed: false }]);
       setInput('');
     }
+  };
+
+  const toggleComplete = (idx) => {
+    setTasks(tasks =>
+      tasks.map((task, i) =>
+        i === idx ? { ...task, completed: !task.completed } : task
+      )
+    );
+  };
+
+  const deleteTask = (idx) => {
+    setTasks(tasks => tasks.filter((_, i) => i !== idx));
   };
 
   return (
@@ -30,7 +42,27 @@ function ToDoList() {
       </form>
       <ul className="todo-ul">
         {tasks.map((task, idx) => (
-          <li key={idx} className="todo-li">{task}</li>
+          <li key={idx} className="todo-li">
+            <input
+              type="checkbox"
+              checked={task.completed}
+              onChange={() => toggleComplete(idx)}
+              className="todo-checkbox"
+            />
+            <span
+              style={{ textDecoration: task.completed ? 'line-through' : 'none', marginLeft: 8 }}
+            >
+              {task.text}
+            </span>
+            <button
+              onClick={() => deleteTask(idx)}
+              className="todo-delete"
+              style={{ marginLeft: 12 }}
+              aria-label={`Delete task ${task.text}`}
+            >
+              Delete
+            </button>
+          </li>
         ))}
       </ul>
     </div>
