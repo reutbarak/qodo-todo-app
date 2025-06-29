@@ -3,16 +3,29 @@ import { DragDropContext, Droppable } from '@hello-pangea/dnd';
 import AddTaskForm from './AddTaskForm';
 import Task from './Task';
 import './styles.css';
+import aang from './assets/aang.gif';
+import korra from './assets/korra_rock.gif';
+import deleteGif from './assets/delete.gif';
 
 function ToDoList() {
   const [tasks, setTasks] = useState([]);
+  const [showGif, setShowGif] = useState(false);
+  const [showKorraGif, setShowKorraGif] = useState(false);
+  const [showDeleteGif, setShowDeleteGif] = useState(false);
 
   const handleAddTask = (text) => {
     const newTask = { id: `task-${Date.now()}`, text, completed: false };
     setTasks([...tasks, newTask]);
+    setShowGif(true);
+    setTimeout(() => setShowGif(false), 2000);
   };
 
   const handleToggleComplete = (index) => {
+    const taskToToggle = tasks[index];
+    if (!taskToToggle.completed) {
+      setShowKorraGif(true);
+      setTimeout(() => setShowKorraGif(false), 4000);
+    }
     setTasks(currentTasks =>
       currentTasks.map((task, i) =>
         i === index ? { ...task, completed: !task.completed } : task
@@ -22,6 +35,8 @@ function ToDoList() {
 
   const handleDeleteTask = (index) => {
     setTasks(currentTasks => currentTasks.filter((_, i) => i !== index));
+    setShowDeleteGif(true);
+    setTimeout(() => setShowDeleteGif(false), 2000);
   };
 
   const handleDragEnd = (result) => {
@@ -56,6 +71,9 @@ function ToDoList() {
           )}
         </Droppable>
       </DragDropContext>
+      {showGif && <img src={aang} alt="aang" className="aang-gif" />}
+      {showKorraGif && <img src={korra} alt="korra" className="korra-gif" />}
+      {showDeleteGif && <img src={deleteGif} alt="delete" className="delete-gif" />}
     </div>
   );
 }

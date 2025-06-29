@@ -93,3 +93,17 @@ body {
   font-size: 1rem;
   margin-left: 12px;
 }
+
+.korra-gif, .delete-gif {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 300px;
+}
+
+.aang-gif {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 150px;
+}
